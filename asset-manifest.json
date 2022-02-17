@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TexasHoldem/static/css/main.5edfbd58.css",
+    "main.js": "/TexasHoldem/static/js/main.efc584e4.js",
+    "index.html": "/TexasHoldem/index.html",
+    "main.5edfbd58.css.map": "/TexasHoldem/static/css/main.5edfbd58.css.map",
+    "main.efc584e4.js.map": "/TexasHoldem/static/js/main.efc584e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5edfbd58.css",
+    "static/js/main.efc584e4.js"
+  ]
+}
