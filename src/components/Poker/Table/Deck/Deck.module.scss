@@ -1,0 +1,13 @@
+.deck {
+  position: absolute;
+  bottom: 52.5%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  width: 27.5rem;
+
+  img {
+    box-shadow: 2px 8px 4px rgba(0, 0, 0, 0.2);
+    width: 4.5rem;
+    margin: 0 0.5rem;
+  }
+}

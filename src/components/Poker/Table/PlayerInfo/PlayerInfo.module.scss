@@ -1,0 +1,74 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div,
+  > p {
+    grid-column: span 2;
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+    background: #363d6a;
+    border: 3px solid #292f56;
+    border-radius: 360px;
+    padding: 0.25rem 1.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+    h2 {
+      color: #ef2a4f;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+
+    h3 {
+      color: #fdcd00;
+      font-size: 1.2rem;
+      margin-left: 1rem;
+    }
+
+    img {
+      position: absolute;
+      width: 4rem;
+      right: 50%;
+      transform: translate(50%, -3rem);
+      z-index: 5;
+    }
+  }
+
+  .cards {
+    display: flex;
+    margin: 0.5rem 0;
+    justify-content: center;
+
+    img {
+      width: 3.5rem;
+      transform: rotate(-15deg) translate(0.5rem, -0.15rem);
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+      &:nth-of-type(2) {
+        transform: rotate(10deg) translateX(-1rem);
+      }
+    }
+  }
+}
+
+.folded {
+  opacity: 0.5;
+}
+
+.winning-hand,
+.blind {
+  color: #fdcd00;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0.25rem 0;
+  letter-spacing: 1px;
+}
+
+.blind {
+  color: #26ae60;
+}
