@@ -17,7 +17,13 @@ const mainInitialState: MainState = {
 const main = createSlice({
   name: "main",
   initialState: mainInitialState,
-  reducers: {},
+  reducers: {
+    changeOptions(state, action: { payload: { amountOfPlayers: number; initialBalance: number; speed: number } }) {
+      state.amountOfPlayers = action.payload.amountOfPlayers;
+      state.initialBalance = action.payload.initialBalance;
+      state.speed = action.payload.speed;
+    },
+  },
 });
 
 const mainActions = main.actions;

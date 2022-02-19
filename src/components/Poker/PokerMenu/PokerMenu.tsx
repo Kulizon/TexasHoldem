@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { PokerState } from "../../../store/poker";
 import { pokerActions } from "../../../store/poker";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import Button from "../../UI/Button/Button";
 
@@ -16,6 +16,7 @@ const PokerMenu = () => {
   const [amountToCall, setAmountToCall] = useState(0);
   const [isRaiseMenuOpen, setIsRaiseMenuOpen] = useState(false);
   const [raiseValue, setRaiseValue] = useState(5);
+  const raiseInputRef = useRef<HTMLInputElement>(null);
   const user = currentPlayers.find((p) => p.id === "p1");
 
   useEffect(() => {
@@ -42,6 +43,7 @@ const PokerMenu = () => {
       if (isRaiseMenuOpen === true) return;
 
       const amountToRaise = raiseValue;
+      setRaiseValue(5);
 
       if (amountToRaise + amountToCall > user!.balance) return;
 
@@ -98,24 +100,30 @@ const PokerMenu = () => {
                 !isRaiseMenuOpen
                   ? () => {
                       setIsRaiseMenuOpen(true);
+                      raiseInputRef.current!.focus();
                     }
                   : () => {
                       setIsRaiseMenuOpen(false);
                     }
               }
             ></Button>
-            {isRaiseMenuOpen && (
-              <input
-                type="number"
-                min={5}
-                defaultValue={5}
-                step={5}
-                id="amountToRaise"
-                onChange={(e: any) => {
-                  setRaiseValue(+e.target.value);
-                }}
-              />
-            )}
+            <input
+              type="number"
+              min={5}
+              step={5}
+              value={raiseValue}
+              id="amountToRaise"
+              ref={raiseInputRef}
+              onChange={(e: any) => {
+                setRaiseValue(+e.target.value);
+              }}
+              onBlur={() => {
+                setTimeout(() => {
+                  setIsRaiseMenuOpen(false);
+                }, 150);
+              }}
+              style={isRaiseMenuOpen ? { opacity: 1, pointerEvents: "all" } : { opacity: 0, pointerEvents: "none" }}
+            />
           </div>
         </div>
       </form>

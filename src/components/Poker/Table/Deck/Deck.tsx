@@ -55,7 +55,7 @@ const Deck = () => {
   return (
     <div className={styles.deck}>
       {deck.map((c) => {
-        return <img src={`cards/${c.id}.png`} alt={c.id} key={c.id}></img>;
+        return <img src={`${process.env.PUBLIC_URL}/cards/${c.id}.png`} alt={c.id} key={c.id}></img>;
       })}
     </div>
   );

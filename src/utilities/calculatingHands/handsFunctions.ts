@@ -25,9 +25,6 @@ export const isRoyalFlush = (colors: ColorsMap, values: ValuesMap, cards: Card[]
 export const isStraightFlush = (colors: ColorsMap, values: ValuesMap, cards: Card[]) => {
   let isHand = false;
 
-  let streak = 0;
-  let streakValue = cards[0].value;
-
   let potentialFlushColor: string = "";
   for (const key in colors) {
     if (colors[key as keyof ColorsMap] >= 5) {
@@ -35,15 +32,31 @@ export const isStraightFlush = (colors: ColorsMap, values: ValuesMap, cards: Car
     }
   }
 
-  if (!potentialFlushColor) {
-    return { isHand: isHand, maxHandPower: streakValue };
+  if (!potentialFlushColor) return { isHand: isHand, maxHandPower: 0 };
+
+  let streak = 0;
+  let start = 1;
+  let streakValue = 0;
+
+  if (cards[0].color === potentialFlushColor) {
+    start = 1;
+    streakValue = cards[0].value;
+  } else if (cards[1].color === potentialFlushColor) {
+    start = 2;
+    streakValue = cards[1].value;
+  } else {
+    start = 3;
+    streakValue = cards[2].value;
   }
 
-  for (let i = 1; i < cards.length; i++) {
+  for (let i = start; i < cards.length; i++) {
     if (cards[i].value === streakValue + 1 && cards[i].color === potentialFlushColor) {
       streak += 1;
       streakValue += 1;
-    } else {
+    } else if (cards[i].value === streakValue && cards[i].color === potentialFlushColor) {
+      streakValue = cards[i].value;
+    } else if (streak < 4) {
+      streak = 0;
       streakValue = cards[i].value;
     }
   }
@@ -123,7 +136,7 @@ export const isStraight = (colors: ColorsMap, values: ValuesMap, cards: Card[]) 
       streakValue += 1;
     } else if (cards[i].value === streakValue) {
       streakValue = cards[i].value;
-    } else {
+    } else if (streak < 4) {
       streak = 0;
       streakValue = cards[i].value;
     }

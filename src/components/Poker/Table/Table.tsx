@@ -9,8 +9,6 @@ import styles from "./Table.module.scss";
 const Table = () => {
   const { folded, currentPlayers, winners } = useSelector((state: { poker: PokerState }) => state.poker);
 
-  // create a array with both currentPlayers and losers and then sort by order
-
   return (
     <div className={styles.table}>
       <div className={styles.line}></div>

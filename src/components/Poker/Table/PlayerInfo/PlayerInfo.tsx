@@ -104,14 +104,17 @@ const PlayerInfo = (props: {
   return (
     <div className={styles.player + " " + (props.folded ? styles.folded : " ")}>
       <div className={styles.info}>
-        {isWinner && <img src="assets/crown.svg" alt="Winning Crown"></img>}
+        {isWinner && <img src={`${process.env.PUBLIC_URL}/assets/crown.svg`} alt="Winning Crown"></img>}
         <h2>{props.name}</h2>
         <h3>${props.balance}</h3>
       </div>
 
       <div className={styles.cards}>
-        <img src={`cards/${getCard(0, !isGameStarted)}`} alt={getCard(0, !isGameStarted)}></img>
-        <img src={`cards/${getCard(1, !isGameStarted)}`} alt={getCard(1, !isGameStarted)}></img>
+        <img
+          src={`${process.env.PUBLIC_URL}/cards/${getCard(0, !isGameStarted)}`}
+          alt={getCard(0, !isGameStarted)}
+        ></img>
+        <img src={`${process.env.PUBLIC_URL}/cards/${getCard(1, !isGameStarted)}`} alt={getCard(1, !isGameStarted)}></img>
       </div>
 
       {winnerHand ? (

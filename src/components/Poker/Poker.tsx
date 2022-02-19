@@ -9,11 +9,44 @@ import { Card } from "../../interfaces/Card";
 import { getBlinds } from "../../store/poker";
 import generateHand from "../../utilities/generating/generateHand";
 
-import Table from "../../components/Poker/Table/Table";
-import PokerMenu from "../../components/Poker/PokerMenu/PokerMenu";
-import Popup from "../../components/UI/Popup/Popup";
+import Table from "./Table/Table";
+import PokerMenu from "./PokerMenu/PokerMenu";
+import Options from "../Options/Options";
+import Popup from "../UI/Popup/Popup";
 
 import styles from "./Poker.module.scss";
+
+// import { isStraightFlush } from "../../utilities/calculatingHands/handsFunctions";
+// console.log(
+//   isStraightFlush(
+//     { s: 0, h: 1, d: 0, c: 6 },
+//     {
+//       "1": 0,
+//       "2": 0,
+//       "3": 0,
+//       "4": 0,
+//       "5": 0,
+//       "6": 0,
+//       "7": 0,
+//       "8": 0,
+//       "9": 0,
+//       "10": 0,
+//       "11": 0,
+//       "12": 0,
+//       "13": 0,
+//       "14": 0,
+//     },
+//     [
+//       { value: 4, color: "h", id: "5c" },
+//       { value: 5, color: "c", id: "5c" },
+//       { value: 6, color: "c", id: "4c" },
+//       { value: 7, color: "c", id: "5c" },
+//       { value: 8, color: "c", id: "5c" },
+//       { value: 9, color: "c", id: "5c" },
+//       { value: 14, color: "c", id: "5c" },
+//     ]
+//   )
+// );
 
 const Poker = () => {
   const dispatch = useDispatch();
@@ -34,11 +67,11 @@ const Poker = () => {
     if (isGameFinished === true) {
       const user = currentPlayers.find((p) => p.id === "p1");
 
-      if (!user)
+      if (user)
         setPopupInfo({
           heading: "You won!",
-          text: "Congratulations! You managed to defeat all of your opponents. Would you like to try again?",
-          imageUrl: "assets/crown.svg",
+          text: "Congratulations! You have managed to defeat all of your opponents. Would you like to try again?",
+          imageUrl: `${process.env.PUBLIC_URL}/assets/crown.svg`,
           imageAlt: "Crown",
           didPlayerWin: true,
         });
@@ -46,7 +79,7 @@ const Poker = () => {
         setPopupInfo({
           heading: "You lost!",
           text: "What a shame! You have unfortunately been eliminated. Would you like to try again?",
-          imageUrl: "assets/crown.svg",
+          imageUrl: `${process.env.PUBLIC_URL}/assets/broken-heart.svg`,
           imageAlt: "Crown",
           didPlayerWin: false,
         });
@@ -54,6 +87,15 @@ const Poker = () => {
   }, [isGameFinished, currentPlayers]);
 
   useEffect(() => {
+    if (currentPlayers.length !== 0) return;
+    setPopupInfo({
+      heading: "",
+      text: "",
+      imageUrl: "",
+      imageAlt: "",
+      didPlayerWin: false,
+    });
+
     const blinds = getBlinds(lastBigBlind - 1, amountOfPlayers);
 
     const result = generateBots(amountOfPlayers - 1, blinds, cards, initialBalance);
@@ -79,7 +121,7 @@ const Poker = () => {
     dispatch(pokerActions.setPlayers(players));
     dispatch(pokerActions.addUsedCards(usedCards));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, [dispatch, currentPlayers, isGameFinished]);
 
   return (
     <main className={styles["poker-main"]}>
@@ -95,6 +137,7 @@ const Poker = () => {
         <>
           <Table></Table>
           <PokerMenu></PokerMenu>
+          <Options></Options>
         </>
       )}
     </main>

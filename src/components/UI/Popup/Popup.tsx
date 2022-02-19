@@ -1,10 +1,15 @@
+import { useDispatch } from "react-redux";
+import { pokerActions } from "../../../store/poker";
+
 import Button from "../Button/Button";
 
 import styles from "./Popup.module.scss";
 
 const Popup = (props: { heading: string; text: string; imageUrl: string; imageAlt: string; didPlayerWin: boolean }) => {
+  const disptach = useDispatch();
+
   const restartHandler = () => {
-    // reload page
+    disptach(pokerActions.restartGame());
   };
 
   return (

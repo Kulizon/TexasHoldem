@@ -36,11 +36,15 @@ const checkWinner = (hands: { playerID: string; hand: Card[] }[], folded: string
 
   hands.forEach((h) => {
     if (h.playerID in folded) return;
+    
 
     const calculatedHand = checkHand(h);
 
     calculatedHands.push(calculatedHand);
   });
+
+  console.log(hands);
+  console.log(calculatedHands);
 
   let winners: CalculatedHand[] = [];
 
@@ -68,7 +72,7 @@ const checkWinner = (hands: { playerID: string; hand: Card[] }[], folded: string
     winners = [highestPowerPlayer];
   }
 
-  return winners
+  return winners;
 };
 
 export default checkWinner;

@@ -225,7 +225,7 @@ const poker = createSlice({
       state.firstPlayerNumber = firstTurn;
 
       state.isPlayerTurn = false;
-      if (firstTurn === state.currentPlayers.length) state.isPlayerTurn = true;
+      if (firstTurn === 1) state.isPlayerTurn = true;
 
       if (state.currentPlayers.length === 1) {
         if (state.currentPlayers[0].id === "p1") state.isGameFinished = true;
@@ -247,6 +247,23 @@ const poker = createSlice({
       });
 
       state.pot = 0;
+    },
+    restartGame(state) {
+      state.round = 1;
+      state.pot = 30;
+      state.currentPlayers = [];
+      state.losers = [];
+      state.folded = [];
+      state.isGameStarted = true;
+      state.isPlayerTurn = false;
+      state.isGameFinished = false;
+      state.currentTurn = 4;
+      state.firstPlayerNumber = 4;
+      state.lastBigBlind = 3;
+      state.maxBet = 20;
+      state.usedCards = [];
+      state.deck = [];
+      state.winners = [];
     },
   },
 });

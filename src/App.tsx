@@ -1,14 +1,13 @@
-import { useState } from "react";
-
-import Main from "./pages/Main/Main";
-import Poker from "./pages/Poker/Poker";
+import Poker from "./components/Poker/Poker";
 
 import "./App.css";
 
 const App = () => {
-  const [isPlaying] = useState(true);
-
-  return <div className="app">{isPlaying ? <Poker></Poker> : <Main></Main>}</div>;
+  return (
+    <div className="app">
+      <Poker></Poker>
+    </div>
+  );
 };
 
 export default App;
