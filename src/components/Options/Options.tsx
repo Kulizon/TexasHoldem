@@ -12,7 +12,7 @@ import styles from "./Options.module.scss";
 const Options = () => {
   const dispatch = useDispatch();
 
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { amountOfPlayers, speed, initialBalance } = useSelector((state: { main: MainState }) => state.main);
 
   const submitHandler = (e: any) => {
@@ -26,7 +26,7 @@ const Options = () => {
         speed: +speed.value,
       })
     );
-    
+
     setIsMenuOpen(false);
     dispatch(pokerActions.restartGame());
   };
