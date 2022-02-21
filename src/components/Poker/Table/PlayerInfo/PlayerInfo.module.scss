@@ -73,3 +73,13 @@
 .blind {
   color: #26ae60;
 }
+
+@media (max-width: 1200px) {
+  .player {
+    .cards {
+      img {
+        width: 3rem;
+      }
+    }
+  }
+}

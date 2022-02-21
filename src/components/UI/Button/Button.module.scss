@@ -12,3 +12,15 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 1200px) {
+  .button {
+    width: 6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .button {
+    width: 5.5rem;
+  }
+}

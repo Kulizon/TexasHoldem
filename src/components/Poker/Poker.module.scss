@@ -5,3 +5,9 @@
   justify-content: center;
   height: 100vh;
 }
+
+@media (max-width: 850px) {
+  .poker-main {
+    height: initial;
+  }
+}

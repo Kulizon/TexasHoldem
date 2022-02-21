@@ -11,3 +11,29 @@
     margin: 0 0.5rem;
   }
 }
+
+@media (max-width: 1200px) {
+  .deck {
+    width: 22.5rem;
+
+    img {
+      width: 3.5rem;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .deck {
+    display: flex;
+    flex-direction: column;
+    width: 3.5rem;
+    height: 34rem;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+
+    img {
+      margin: 0.5rem 0;
+    }
+  }
+}

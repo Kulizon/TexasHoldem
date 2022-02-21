@@ -1,3 +1,16 @@
 body {
-    background: #222848;
+  background: #222848;
 }
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+    html {
+      font-size: 80%;
+    }
+  }
+  
