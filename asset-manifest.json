@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/TexasHoldem/static/css/main.ab3e376c.css",
+    "main.css": "/TexasHoldem/static/css/main.f18808c3.css",
     "main.js": "/TexasHoldem/static/js/main.8737b953.js",
     "index.html": "/TexasHoldem/index.html",
-    "main.ab3e376c.css.map": "/TexasHoldem/static/css/main.ab3e376c.css.map",
+    "main.f18808c3.css.map": "/TexasHoldem/static/css/main.f18808c3.css.map",
     "main.8737b953.js.map": "/TexasHoldem/static/js/main.8737b953.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab3e376c.css",
+    "static/css/main.f18808c3.css",
     "static/js/main.8737b953.js"
   ]
 }
