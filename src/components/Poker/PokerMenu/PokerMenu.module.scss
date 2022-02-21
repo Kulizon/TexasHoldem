@@ -129,6 +129,11 @@
   .menu {
     > p {
       padding: 1rem 1rem 1.1rem;
+      border-radius: 0 20px 0 0;
+
+      &:first-of-type {
+        border-radius: 20px 0 0 0 ;
+      }
     }
   }
 
@@ -146,11 +151,11 @@
 @media (max-width: 600px) {
   .menu {
     > p {
-      padding: 1rem 0.75rem 1.1rem;
+      padding: 0.65rem 0.5rem 0.75rem;
     }
   }
 
   .menu-form {
-    padding: 2rem 1.25rem 1.5rem;
+    padding: 2rem 1.25rem 1.75rem;
   }
 }
