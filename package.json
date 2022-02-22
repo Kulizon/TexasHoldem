@@ -1,6 +1,6 @@
 {
   "name": "poker-front",
-  "homepage": "http://Kulizon.github.io/TexasHoldem", 
+  "homepage": "http://Kulizon.github.io/TexasHoldem",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

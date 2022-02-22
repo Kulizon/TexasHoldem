@@ -1,13 +1,6 @@
 import { Card } from "../interfaces/Card";
 import { checkHand } from "./checkHand";
-
-export interface CalculatedHand {
-  playerID: string;
-  handName: string;
-  power: number;
-  maxHandPower: number;
-  highCard: number;
-}
+import { CalculatedHand } from "../interfaces/CalculatedHand";
 
 const getWinnerOrEqualPlayers = (players: CalculatedHand[], criterium: "power" | "maxHandPower" | "highCard") => {
   let highestPowerPlayer = players[0];
@@ -31,20 +24,16 @@ const getWinnerOrEqualPlayers = (players: CalculatedHand[], criterium: "power" |
   return { highestPowerPlayer, samePowerPlayers };
 };
 
-const checkWinner = (hands: { playerID: string; hand: Card[] }[], folded: string[]) => {
+const checkWinner = (hands: { playerID: string; hand: Card[]; deck: Card[] }[], folded: string[]) => {
   const calculatedHands: CalculatedHand[] = [];
 
   hands.forEach((h) => {
     if (h.playerID in folded) return;
-    
 
     const calculatedHand = checkHand(h);
 
     calculatedHands.push(calculatedHand);
   });
-
-  console.log(hands);
-  console.log(calculatedHands);
 
   let winners: CalculatedHand[] = [];
 

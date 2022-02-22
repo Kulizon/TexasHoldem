@@ -11,6 +11,7 @@ import {
   findHighCard,
 } from "./calculatingHands/handsFunctions";
 import { mapColors, mapValues } from "./calculatingHands/mapFunctions";
+import { CalculatedHand } from "../interfaces/CalculatedHand";
 
 const sortCards = (cards: Card[]) => {
   const sortedCards: Card[] = [...cards];
@@ -28,22 +29,16 @@ const sortCards = (cards: Card[]) => {
   return sortedCards;
 };
 
-interface CalculatedHand {
-  playerID: string;
-  handName: string;
-  power: number;
-  maxHandPower: number;
-  highCard: number;
-}
+export const checkHand = (h: { playerID: string; hand: Card[]; deck: Card[] }) => {
+  const allPlayerCards = [...h.hand, ...h.deck];
 
-export const checkHand = (h: { playerID: string; hand: Card[] }) => {
-  const colors = h.hand.map((c) => c.color);
-  const values = h.hand.map((c) => c.value);
+  const colors = allPlayerCards.map((c) => c.color);
+  const values = allPlayerCards.map((c) => c.value);
 
   const mappedColors = mapColors(colors);
   const mappedValues = mapValues(values as unknown as string[]);
 
-  const playerHand = sortCards(h.hand);
+  const playerHand = sortCards([...h.hand, ...h.deck]);
 
   const calculatedHand: CalculatedHand = {
     playerID: h.playerID,
@@ -108,14 +103,13 @@ export const checkHand = (h: { playerID: string; hand: Card[] }) => {
       calculatedHand.power = 2;
     }
   } else {
-    const highCard = findHighCard(mappedColors, mappedValues, playerHand);
-
+    const highCard = findHighCard(mappedColors, mappedValues, h.hand);
     calculatedHand.handName = "high-card";
     calculatedHand.maxHandPower = highCard;
     calculatedHand.power = 1;
   }
 
-  calculatedHand.highCard = findHighCard(mappedColors, mappedValues, playerHand);
+  calculatedHand.highCard = findHighCard(mappedColors, mappedValues, h.hand);
 
   return calculatedHand;
 };

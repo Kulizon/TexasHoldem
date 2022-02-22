@@ -9,7 +9,7 @@ const makeChoice = (
   hand: Card[],
   deck: Card[]
 ): { choice: "raise"; amountToRaise: number } | { choice: "call" } | { choice: "fold" } => {
-  const { power } = checkHand({ playerID: playerID, hand: [...hand, ...deck] });
+  const { power } = checkHand({ playerID: playerID, hand: [...hand], deck: [...deck] });
 
   if (round === 1) {
     let firstRoundPower: 1 | 2 | 3 | 4 | 5 = 1;

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Card } from "../../../../interfaces/Card";
 import getRandomCard from "../../../../utilities/getRandomCard";
 import checkWinner from "../../../../utilities/checkWinner";
-import { CalculatedHand } from "../../../../utilities/checkWinner";
+import { CalculatedHand } from "../../../../interfaces/CalculatedHand";
 
 import styles from "./Deck.module.scss";
 
@@ -39,7 +39,7 @@ const Deck = () => {
       console.log("Checking winner");
 
       const hands = currentPlayers.map((p) => {
-        return { playerID: p.id, hand: [...p.hand, ...deck] };
+        return { playerID: p.id, hand: [...p.hand], deck: [...deck] };
       });
 
       const winners: CalculatedHand[] = checkWinner(
