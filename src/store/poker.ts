@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Card } from "../interfaces/Card";
 import { Player } from "../interfaces/Player";
 import allCards from "./../assets/allCards";
-import { CalculatedHand } from "./../utilities/checkWinner";
+import { CalculatedHand } from "../interfaces/CalculatedHand";
 import generateHand from "./../utilities/generating/generateHand";
 
 type PokerState = {

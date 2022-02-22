@@ -5,7 +5,7 @@ import makeChoice from "../../../../utilities/ai/makeChoice";
 import { PokerState } from "../../../../store/poker";
 import { MainState } from "../../../../store/main";
 import { Card } from "../../../../interfaces/Card";
-import { CalculatedHand } from "../../../../utilities/checkWinner";
+import { CalculatedHand } from "../../../../interfaces/CalculatedHand";
 
 import styles from "./PlayerInfo.module.scss";
 
@@ -38,8 +38,6 @@ const PlayerInfo = (props: {
       if (props.balance === 0 && props.currentBet > 0 && props.order === currentTurn) dispatch(pokerActions.nextTurn());
       if (props.balance === 0 && props.currentBet === 0 && props.order === currentTurn)
         dispatch(pokerActions.nextTurn());
-      // set to busted
-      // remove from currentPlayers or sth
 
       if (props.type === "player" && props.order === currentTurn) dispatch(pokerActions.setIsPlayerTurn(true));
 
@@ -114,7 +112,10 @@ const PlayerInfo = (props: {
           src={`${process.env.PUBLIC_URL}/cards/${getCard(0, !isGameStarted)}`}
           alt={getCard(0, !isGameStarted)}
         ></img>
-        <img src={`${process.env.PUBLIC_URL}/cards/${getCard(1, !isGameStarted)}`} alt={getCard(1, !isGameStarted)}></img>
+        <img
+          src={`${process.env.PUBLIC_URL}/cards/${getCard(1, !isGameStarted)}`}
+          alt={getCard(1, !isGameStarted)}
+        ></img>
       </div>
 
       {winnerHand ? (
