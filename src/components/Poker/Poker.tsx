@@ -96,7 +96,7 @@ const Poker = () => {
       didPlayerWin: false,
     });
 
-    const blinds = getBlinds(lastBigBlind - 1, amountOfPlayers);
+    const blinds = getBlinds(lastBigBlind - 2, amountOfPlayers);
 
     const result = generateBots(amountOfPlayers - 1, blinds, cards, initialBalance);
     const players: Player[] = result.bots;

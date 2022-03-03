@@ -35,7 +35,7 @@ const pokerInitialState: PokerState = {
   isGameFinished: false,
   currentTurn: 5,
   firstPlayerNumber: 5,
-  lastBigBlind: 3,
+  lastBigBlind: 4,
   maxBet: 20,
   usedCards: [],
   cards: [...allCards],
