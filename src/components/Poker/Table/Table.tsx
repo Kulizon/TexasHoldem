@@ -9,10 +9,12 @@ import styles from "./Table.module.scss";
 const Table = () => {
   const { folded, currentPlayers, winners } = useSelector((state: { poker: PokerState }) => state.poker);
 
+  console.log(currentPlayers);
+
   return (
     <div className={styles.table}>
       <div className={styles.line}></div>
-      <div className={styles.line + ' ' + styles['inner-line']}></div>
+      <div className={styles.line + " " + styles["inner-line"]}></div>
       <div className={styles.players}>
         {currentPlayers.map((p) => (
           <PlayerInfo

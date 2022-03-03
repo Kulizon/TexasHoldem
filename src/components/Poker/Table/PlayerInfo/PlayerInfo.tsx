@@ -45,6 +45,10 @@ const PlayerInfo = (props: {
         console.log(`This is ${props.name} turn.`);
 
         const amountToCall = maxBet - props.currentBet;
+        console.log(props.name);
+        console.log(amountToCall);
+        
+
         const choice = makeChoice(props.id, round, amountToCall, props.hand, deck);
 
         if (choice.choice === "fold") {
