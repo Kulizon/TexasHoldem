@@ -1,4 +1,4 @@
-# TexasHOldem
+# TexasHoldem
 Texas Holdem implemented in react with typescript and redux.
 
 ## Demo
